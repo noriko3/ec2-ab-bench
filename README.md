@@ -1,6 +1,8 @@
 # ec2-ab-bench
 
-https://github.com/manabusakai/ec2-bench を元に改造したものです
+https://github.com/manabusakai/ec2-bench を元に改造したものです。
+
+ab の結果を容易に取得したかったので、cloud-config での実行をやめて、ssh でコマンドを投げる方式にしました。
 
 
 ## ec2-ab-bench とは
@@ -42,12 +44,14 @@ security_group_ids 外部からSSHが出来るセキュリティグループを�
 
 引数に ab したい URL を指定します
 
- $ sh ec2-ab-bench.sh http://www.example.com/
- work_dir: /Users/noriko/tmp/ab/1216-1758
- Instances: i-xxxxxxxx i-xxxxxxxx
- Cleanup command: aws ec2 terminate-instances --instance-ids i-xxxxxxxx i-xxxxxxxx
+       $ sh ec2-ab-bench.sh http://www.example.com/
+       work_dir: /Users/noriko/tmp/ab/1216-1758
+       Instances: i-xxxxxxxx i-xxxxxxxx
+       Cleanup command: aws ec2 terminate-instances --instance-ids i-xxxxxxxx i-xxxxxxxx
 
 work_dir の中に実行結果が インスタンスID.log のファイルに入っています
+
+ターミネイトするためのコマンドが表示されるので、終わったらこのコマンドを実行してターミネイトできます。
 
 ## その他
 
